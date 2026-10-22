@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JRS ENTERPRISE PABNA</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#fff7fa;color:#29202a}
+header{background:#8e245d;color:white;text-align:center;padding:24px 10px}
+header h1{margin:0;font-size:25px}
+header p{margin-bottom:0}
+main{padding:16px;max-width:900px;margin:auto}
+h2{color:#8e245d}
+.search{width:95%;padding:12px;border:1px solid #ccc;border-radius:8px;font-size:16px}
+.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.card{background:white;border:1px solid #f0d7e3;border-radius:12px;padding:10px}
+.card img{width:100%;height:130px;object-fit:contain;background:#fff}
+.price{color:#a21c58;font-weight:bold}
+button{background:#13864b;color:white;border:0;border-radius:7px;padding:11px;width:100%;font-size:15px}
+.note{background:#fff;border-radius:10px;padding:14px;margin-top:18px}
+footer{text-align:center;background:#321827;color:white;padding:20px;margin-top:24px}
+</style>
+</head>
+<body>
+<header>
+<h1>JRS ENTERPRISE PABNA</h1>
+<p>Cosmetics Wholesale & Dealer Point</p>
+<p>পাবনা, বাংলাদেশ</p>
+</header>
+<main>
+<h2>আমাদের পণ্যসমূহ</h2>
+<p>পছন্দের পণ্য খুঁজুন এবং অর্ডার করুন।</p>
+<input class="search" id="search" placeholder="পণ্যের নাম লিখুন..." oninput="showProducts()">
+<div class="products" id="products"></div>
+<div class="note">
+<h3>অর্ডার ও পেমেন্ট</h3>
+<p>WhatsApp-এ অর্ডার করুন। ক্যাশ অন ডেলিভারি সম্পর্কে নিশ্চিত হতে যোগাযোগ করুন।</p>
+<p>বিকাশ ও নগদ পেমেন্টের ব্যবস্থা অর্ডার নিশ্চিত করার সময় জানানো হবে।</p>
+</div>
+</main>
+<footer>JRS ENTERPRISE PABNA<br>কসমেটিকস হোলসেল ও ডিলার পয়েন্ট</footer>
+<script>
+const items=[
+{name:"Cosmetics Product 1",price:"দাম যোগ করুন",img:"https://placehold.co/300x200?text=Product+1"},
+{name:"Cosmetics Product 2",price:"দাম যোগ করুন",img:"https://placehold.co/300x200?text=Product+2"},
+{name:"Cosmetics Product 3",price:"দাম যোগ করুন",img:"https://placehold.co/300x200?text=Product+3"},
+{name:"Cosmetics Product 4",price:"দাম যোগ করুন",img:"https://placehold.co/300x200?text=Product+4"}
+];
+function showProducts(){
+const q=document.getElementById("search").value.toLowerCase();
+document.getElementById("products").innerHTML=items.filter(p=>p.name.toLowerCase().includes(q)).map(p=>`<div class="card"><img src="${p.img}" alt="${p.name}"><h3>${p.name}</h3><p class="price">${p.price}</p><button onclick="order('${p.name}')">অর্ডার করুন</button></div>`).join("");
+}
+function order(name){
+const phone="WHATSAPP_NUMBER";
+if(phone==="WHATSAPP_NUMBER"){alert("WhatsApp অর্ডার চালু করতে আপনার ব্যবসার WhatsApp নম্বর যোগ করতে হবে।");return;}
+location.href="https://wa.me/"+phone+"?text="+encodeURIComponent("আমি অর্ডার করতে চাই: "+name);
+}
+showProducts();
+</script>
+</body>
+</html>
